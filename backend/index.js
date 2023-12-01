@@ -1,21 +1,96 @@
-const express = require('express')
-const http = require('http')
-const math = require('./math')
-const file= require('./file')
-const users = require('./mock_data.json')
-const fs= require('fs')
+// const express = require('express')
+import express from "express"
+import "express-async-errors";
+import dotenv from 'dotenv'
+import cors from 'cors'
+import morgan from 'morgan'
+
+
+import connectMongoDb from './config/db.js'
+
+import testRoutes from "./routes/testRoutes.js"
+import authRoutes from "./routes/authRoutes.js"
+import errorMiddleware from "./middlewares/errorMiddleware.js";
+
+
+dotenv.config()
+
+connectMongoDb()
+
+// const http = require('http')
+// const math = require('./math')
+// // const mongoose = require('mongoose')
+
+// // const conection = require('./connection')
+// const file= require('./file')
+// const users = require('./mock_data.json')
+// const fs= require('fs')
+// const User = require('./models/dummy/user')
+// const userRouter = require('./routes/user')
 
 // const myServer = http.createServer((req,res)=>{
 //     console.log("new req rec")
 //     res.end("hello from server")
 //     file.log(req.url)
 // })
-require('dotenv').config()
-const app =express()
-const port =process.env.PORT||4001
 
 
-app.use(express.urlencoded({extended:false}));
+const app = express()
+
+app.use(express.json({
+    extended: false
+}));
+app.use(cors())
+app.use(morgan('dev'))
+
+
+app.use("/api/v1/test", testRoutes)
+app.use("/api/v1/auth", authRoutes)
+
+//validation middleware
+app.use(errorMiddleware)
+
+
+const PORT = process.env.PORT || 4001
+
+// const uri = "mongodb+srv://admin:DqKb7NOaLWOM4JLW@cluster0.4jwsbh7.mongodb.net/myDb?retryWrites=true&w=majority"
+
+// mongoose.connect(uri)
+// .then(()=>console.log("connetced"))
+// .catch((err)=>console.log(err))
+
+// console.log(conection)
+
+// const userSchema = new mongoose.Schema({
+//     firstName:{
+//         type:String,
+//         required:true
+//     },
+//     lastName:{
+//         type:String,
+
+//     },
+//     email:{
+//         type:String,
+//         required:true,
+//         unique:true
+//     },
+//     jobTitle:{
+//         type:String,
+
+//     },
+//     gender:{
+//         type:String
+//     }
+// },{timestamps:true})
+
+// const User = new mongoose.model("user",userSchema)
+
+// app.use(express.urlencoded({extended:false}));
+
+
+// app.use("/users",userRouter)s
+// application/json/
 
 // console.log(math.add(2,3))
 // const jokes = [
@@ -35,38 +110,12 @@ app.use(express.urlencoded({extended:false}));
 //     // return res.json(users)
 // })
 
-app.get('/api/users',(req,res)=>{
-    return res.json(users)
-})
 
-
-
-app.get('/api/users/:id',(req,res)=>{
-
-    const id = Number(req.params.id)
-    const user = users.find((user)=>user.id==id)
-    return res.json(user)
-})
-
-app.post('/api/users',(req,res)=>{
-
-    const body=req.body
-    users.push({...body,id:users.length+1})
-    fs.writeFile('./mock_data.json',JSON.stringify(users),(err,data)=>{
-        return res.json({status:"success",id:users.length+1})
-    })
-
-    // const body = req.json
-    // console.log(body)
-    // const id = Number(req.params.id)
-    // const user = users.find((user)=>user.id==id)
-    
-})
 
 // app.get('/api/jokes',(req,res)=>{
 //     res.send(jokes)
 // })
 
-app.listen(process.env.PORT,()=>{
-    console.log(`examplea pap ${process.env.PORT}`)
+app.listen(PORT, () => {
+    console.log(`examplea app ${process.env.DEV_MODE} ${PORT}`)
 })

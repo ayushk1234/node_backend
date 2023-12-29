@@ -21,15 +21,15 @@ import AddTodo from './components/AddTodo'
 import Todos from './components/Todos'
 import Counter from './components/counter/Counter'
 import Register from './authLogin/Register'
-
+import MolecularViewer from './assignment/MolecularViewer'
 
 function App() {
   const [count, setCount] = useState('olive')
 
-  const [amount,setAmount]=useState(0)
-  const [from,setFrom]=useState("usd")
-  const [to,setTo]=useState("inr")
-  const [converted,setConverted]=useState(0)
+  const [amount, setAmount] = useState(0)
+  const [from, setFrom] = useState("usd")
+  const [to, setTo] = useState("inr")
+  const [converted, setConverted] = useState(0)
 
 
   // const currenyInfo =  useCurrencyInfo(from)
@@ -61,154 +61,155 @@ function App() {
   //   })
   // })
 
-//   return (
-//     <div>
-//     {/* // < div className='w-full h-screen duration-200' style={{backgroundColor:count}}> */}
-//       {/* <h1 className='bg-green-400 text-black p-4'>hi</h1> */}
-//       {/* <Card/> */}
-//       {/* <PasswordGenerator/> */}
-//       {/* <Form/> */}
-//       {/* <div className='fixed flex ' style={{backgroundColor:count}}>hgghiu</div>
-//       <button onClick={()=>setCount('red')}>"White"</button> */}
+  //   return (
+  //     <div>
+  //     {/* // < div className='w-full h-screen duration-200' style={{backgroundColor:count}}> */}
+  //       {/* <h1 className='bg-green-400 text-black p-4'>hi</h1> */}
+  //       {/* <Card/> */}
+  //       {/* <PasswordGenerator/> */}
+  //       {/* <Form/> */}
+  //       {/* <div className='fixed flex ' style={{backgroundColor:count}}>hgghiu</div>
+  //       <button onClick={()=>setCount('red')}>"White"</button> */}
 
 
-//       {/* {
-//         count.map((joke,index)=>{
-//           return (<div key={[joke.id]}>
-//             <h3>{joke.id}</h3>
-//             <h3>{joke.content}</h3>
-//           </div>)
-//         })
-//       } */}
+  //       {/* {
+  //         count.map((joke,index)=>{
+  //           return (<div key={[joke.id]}>
+  //             <h3>{joke.id}</h3>
+  //             <h3>{joke.content}</h3>
+  //           </div>)
+  //         })
+  //       } */}
 
-// <div
-//             className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
-//             // style={{
-//             //     backgroundImage: `url('${BackgroundImage}')`,
-//             // }}
-//         >
-//             <div className="w-full">
-//                 <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
-//                     <form
-//                         onSubmit={(e) => {
-//                             e.preventDefault();
-//                             convert()
-                           
-//                         }}
-//                     >
-//                         <div className="w-full mb-1">
-//                             <InputBox
-//                                 label="From"
-//                                 amount={amount}
-//                                 currencyOption={options}
-//                                 onCurrencyChange={(currency)=>setAmount(amount)}
-//                                 selectCurrency={from}
-//                                 onAmountChange={(amount)=>setAmount(amount)}
-                                
-//                             />
-//                         </div>
-//                         <div className="relative w-full h-0.5">
-//                             <button
-//                                 type="button"
-//                                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
-//                                 onClick={swap}
-//                             >
-//                                 swap
-//                             </button>
-//                         </div>
-//                         <div className="w-full mt-1 mb-4">
-//                             <InputBox
-//                                 label="To"
-                               
-//                                 amount={converted}
-//                                 currencyOption={options}
-//                                 onCurrencyChange={(currency)=>setTo(currency)}
-//                                 selectCurrency={from}
-                                
-//                             />
-//                         </div>
-//                         <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
-//                             Convert {from.toUpperCase()} to {to.toUpperCase()}
-//                         </button>
-//                     </form>
-//                 </div>
-//             </div>
-//         </div>
-       
-//     </div>
-//   )
+  // <div
+  //             className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
+  //             // style={{
+  //             //     backgroundImage: `url('${BackgroundImage}')`,
+  //             // }}
+  //         >
+  //             <div className="w-full">
+  //                 <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
+  //                     <form
+  //                         onSubmit={(e) => {
+  //                             e.preventDefault();
+  //                             convert()
 
-// return(
-//   <UserContextProvider>
-//     <h1>hi app</h1>
-//     <Login/>
-//     <Profile/>
+  //                         }}
+  //                     >
+  //                         <div className="w-full mb-1">
+  //                             <InputBox
+  //                                 label="From"
+  //                                 amount={amount}
+  //                                 currencyOption={options}
+  //                                 onCurrencyChange={(currency)=>setAmount(amount)}
+  //                                 selectCurrency={from}
+  //                                 onAmountChange={(amount)=>setAmount(amount)}
 
-//   </UserContextProvider>
-// )
+  //                             />
+  //                         </div>
+  //                         <div className="relative w-full h-0.5">
+  //                             <button
+  //                                 type="button"
+  //                                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
+  //                                 onClick={swap}
+  //                             >
+  //                                 swap
+  //                             </button>
+  //                         </div>
+  //                         <div className="w-full mt-1 mb-4">
+  //                             <InputBox
+  //                                 label="To"
 
+  //                                 amount={converted}
+  //                                 currencyOption={options}
+  //                                 onCurrencyChange={(currency)=>setTo(currency)}
+  //                                 selectCurrency={from}
 
-const [themeMode,setThemeMode]=useState("light")
+  //                             />
+  //                         </div>
+  //                         <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
+  //                             Convert {from.toUpperCase()} to {to.toUpperCase()}
+  //                         </button>
+  //                     </form>
+  //                 </div>
+  //             </div>
+  //         </div>
 
-const lightTheme=()=>{
-  setThemeMode("light")
-}
+  //     </div>
+  //   )
 
-const darkTheme = ()=>{
-  setThemeMode("dark")
+  // return(
+  //   <UserContextProvider>
+  //     <h1>hi app</h1>
+  //     <Login/>
+  //     <Profile/>
 
-}
-
-// useEffect(()=>{
-//   document.querySelector('html').classList.remove("light","dark")
-//   document.querySelector('html').classList.add(themeMode)
-// },[themeMode])
-
-// return(
-//   <ThemeProvider value={{themeMode,lightTheme,darkTheme }}>
-
-//     <div className="flex flex-wrap min-h-screen items-center">
-//                 <div className="w-full">
-//                     <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
-//                       <ThemeBtn/>
-                        
-//                     </div>
-
-//                     <div className="w-full max-w-sm mx-auto">
-//                        <Card/>
-//                     </div>
-//                 </div>
-//     </div>
-
-//   </ThemeProvider>
-
-// )
+  //   </UserContextProvider>
+  // )
 
 
-// return(
-//   <div>
-//     <AddTodo/>
-//     <Todos/>
-//     <Counter/>
-//   </div>
-// )
-// return(
-//   <div>
-//     <Router>
-//       <Routes>
-//         <Route path="/" element ={<Home/>}/>
-        
-//       </Routes>
-//     </Router>
-//   </div>
-// )
+  const [themeMode, setThemeMode] = useState("light")
+
+  const lightTheme = () => {
+    setThemeMode("light")
+  }
+
+  const darkTheme = () => {
+    setThemeMode("dark")
+
+  }
+
+  // useEffect(()=>{
+  //   document.querySelector('html').classList.remove("light","dark")
+  //   document.querySelector('html').classList.add(themeMode)
+  // },[themeMode])
+
+  // return(
+  //   <ThemeProvider value={{themeMode,lightTheme,darkTheme }}>
+
+  //     <div className="flex flex-wrap min-h-screen items-center">
+  //                 <div className="w-full">
+  //                     <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
+  //                       <ThemeBtn/>
+
+  //                     </div>
+
+  //                     <div className="w-full max-w-sm mx-auto">
+  //                        <Card/>
+  //                     </div>
+  //                 </div>
+  //     </div>
+
+  //   </ThemeProvider>
+
+  // )
 
 
-return(
-  <div>
-    <Register/>
-  </div>
-)
+  // return(
+  //   <div>
+  //     <AddTodo/>
+  //     <Todos/>
+  //     <Counter/>
+  //   </div>
+  // )
+  // return(
+  //   <div>
+  //     <Router>
+  //       <Routes>
+  //         <Route path="/" element ={<Home/>}/>
+
+  //       </Routes>
+  //     </Router>
+  //   </div>
+  // )
+
+
+  return (
+    <div>
+      <MolecularViewer />
+      {/* <Register/> */}
+    </div>
+  )
 }
 
 export default App
